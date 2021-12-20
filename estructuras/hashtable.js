@@ -1,6 +1,6 @@
-class CustomHashTable {
+class HashTable {
     constructor(size){
-
+        this.data= new Array(size);
     }
 
     hashFunction(key){
@@ -10,12 +10,28 @@ class CustomHashTable {
         }
         return hash;
     }
+
     //insert
     set(key, value) {
+        const address = this.hashFunction(key);
+        if(!this.data[address]){
+            this.data[address] = [];
+        }
+        this.data[address].push([key,value]);
+        return this.data;
     }
-    //search
+    //search -> esto retorna el value
     get(key) {
+        const address = this.hashFunction(key)
+        const currentBucket = this.data[address];
 
+        if(currentBucket){
+            for(let i=0; i<currentBucket.length; i++){
+                if(currentBucket[i][0]==key)
+                    return currentBucket[i][1];
+            }
+        }
+        return undefined;
     }
     //delete
     delete(key){
