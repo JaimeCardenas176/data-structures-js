@@ -1,5 +1,0 @@
-class CustomList {
-    constructor(){
-        
-    }
-}
