@@ -23,12 +23,16 @@ class Stack {
     }
 
     pop(){
-        if(!this.top)
+        if (!this.top) {
             return null;
-
-        this.top=this.top.next;
-        this.length--;
-        return this;
+          }
+          if (this.top === this.bottom) {
+            this.bottom = null;
+          }
+          this.top = this.top.next;
+          this.length--;
+      
+          return this;
     }
 
     push(value){
@@ -38,8 +42,9 @@ class Stack {
             this.bottom=newNode;
         }
         else{
-            newNode.next=this.top;
-            this.top=newNode;
+            const holdingPointer = this.top;
+      this.top = newNode;
+      this.top.next = holdingPointer;
         }
         this.length++;
         return this;

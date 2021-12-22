@@ -58,9 +58,17 @@ const graphs = {
     5: [0, 0, 0, 1, 0, 0],
 }
 
-//                                7 6 5 4 3 2 1 0             128  +  64   +   32  +   16  +   8   +    4  +   2   +  1  = 255                                                                     
-//00 00 0 0 0-15 0-F 00-FF  255   1 1 1 1 1 1 1 1     ->>     1*2^7 + 1*2^6 + 1*2^5 + 1*2^4 + 1*2^3 + 1*2^2 + 1*2^1 + 1*2^0
-                                    //127         
-//                          FF -> 255
-//                           FF -> FF F  -> 4095
-//                              FF -> 0F -> 255/16 -> 15
+class Graph {
+    constructor() {
+      this.nodes = 0;
+      this.adjacentList = {};
+    }
+    addVertex(node) {
+      this.adjacentList[node] = [];
+      this.nodes++;
+    }
+    addEdge(node1, node2) {
+      this.adjacentList[node1].push(node2);
+      this.adjacentList[node2].push(node1);
+    }
+  }

@@ -1,6 +1,3 @@
-//Listas -> arrays [1,2,3,4,5];
-
-
 class List {
     
     constructor(){
@@ -24,12 +21,12 @@ class List {
         this.length--;
         return lastItem;
     }
+
     delete(index){
         const item = this.data[index];
         this.shiftIndex(index);
         return item;
     }
-
     shiftIndex(index) {
         for (let i = index; i < this.length-1; i++) {
             this.data[i] = this.data[i+1];            
@@ -40,8 +37,3 @@ class List {
 
 
 }
-
-let lista = new List();
-lista.push(10);
-lista.push(100);
-lista.push(1000);
